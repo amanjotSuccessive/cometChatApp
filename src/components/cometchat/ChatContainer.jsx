@@ -253,7 +253,7 @@ class ChatContainer extends Component {
       <React.Fragment>
         <div className={chatBoxClasses}>
           <Slide top>
-            <div className="col-md-12 col-xl-10 col-sm-12 col-xs-12 p-0">
+            <div className="col-md-12 col-xl-10 col-sm-12 col-xs-12 p-0 align-center">
               <div className="border-0 row chat-box bg-white">
                 <ChatBox
                   user={this.state.user}
