@@ -1,18 +1,17 @@
 import React from 'react';
+import { AppProvider } from "@shopify/polaris";
 import './App.css';
-import CCBaseComponent from "./components/cometchat/Base";
-import { HashRouter, Switch } from 'react-router-dom';
-import { createBrowserHistory } from 'history';
+import Base from "./components/cometchat/Base";
+import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
 
 function App() {
-  const history = createBrowserHistory();
-  return (
-    <HashRouter history={history}>
-    <Switch>
-      <CCBaseComponent />
-    </Switch>
-    </HashRouter>
-  );
+  return (<AppProvider>
+    <Router>
+      <div>
+        <Route path="/:uid" component={Base} />
+      </div>
+    </Router>
+  </AppProvider>);
 }
 
 export default App;

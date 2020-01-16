@@ -1,111 +1,94 @@
-import React, { Component } from 'react';
-import {CometChat} from "@cometchat-pro/chat";
-import {CC_APP_ID, CC_API_KEY, CC_API_REGION} from "../../constants";
-import LoginForm from "./LoginForm";
+import React, { useEffect, useState } from 'react';
+import { CometChat } from "@cometchat-pro/chat";
+import "@shopify/polaris/styles.css";
+import { SkeletonPage, Layout, Card, SkeletonBodyText, TextContainer, SkeletonDisplayText } from '@shopify/polaris';
+
 import ChatContainer from "./ChatContainer";
-import { Switch, Route, Redirect } from 'react-router-dom';
+import {CC_APP_ID as appID, CC_API_KEY as apiKey, CC_API_REGION as region} from "../../constants";
 
-export default class Base extends Component {
-    
-    state = {
-        username: '',
-        authToken : '',
-        loginBtnDisabled : false,
-        errors : []
-    };
+const Base = (props) => {
+    const UID = props.match.params.uid
+    const [loading, setLoading] = useState(true);
+    const [user, setUser] = useState(null);
 
-    componentDidMount() {
-        
-       //initialize cometchat 
-       CometChat.init(CC_APP_ID, new CometChat.AppSettingsBuilder().subscribePresenceForAllUsers().setRegion(CC_API_REGION).build());
-       
-       if(this.state.username === "")
-       {
-            CometChat.getLoggedinUser().then(user=>{
-                    if(user!== null)
-                        this.setState({username : user.uid, authToken : user.authToken});
-                },
-                error => {
-                    
-                }
-    
-            );
-       }
+    useEffect(() => {
+        init();
+        login()
+    }, []);
+
+    const init = async () => {
+        CometChat.init(appID, new CometChat.AppSettingsBuilder().subscribePresenceForAllUsers().setRegion(region).build());
+
     }
 
-    handleInputChange = (e) =>
-    {
-        this.setState({username:e.target.value});
+    const login = async () => {
+        try {
+            const user = await CometChat.login(UID, apiKey)
+            console.log("user login: ", user)
+            setUser(user);
+            setTimeout(() => {
+                setLoading(false);
+            },1000);
+        }
+        catch (error) {
+            console.log("-----error", error);
+        }
     }
 
-    handleDemoLogin = (e, uid) => {
+    const getCurrentUser = async () => {
+        const user = await CometChat.getLoggedinUser()
+        console.log("user getCurrentUser: ", user)
 
-        this.setState({loginBtnDisabled:true});
-        
-        CometChat.login(uid, CC_API_KEY).then(
-            user => {
-
-                this.setState({username:uid, authToken : user.authToken, loginBtnDisabled:false});
-                
-                window.location="/#/chat";
-
-        },
-        error => {
-            this.setState({error : "Username and/or password is incorrect.", loginBtnDisabled:false})   
-        });
     }
 
-    handleLogin = (e) => {
-        
-        e.preventDefault();
-
-        this.setState({loginBtnDisabled:true});
-
-        const username = this.state.username;
-        
-        CometChat.login(username, CC_API_KEY).then(
-            user => {
-                this.setState({username:username, authToken : user.authToken, loginBtnDisabled:false });
-                
-                window.location="/#/chat";
-
-        },
-        error => {
-            this.setState({error : "Username and/or password is incorrect."})   
-        });
-     
-    }
-
-    handleLogout = () => 
-    {
+    const handleLogout = () => {
         CometChat.logout().then(() => {
             window.location.reload(true);
-        },error=>{
-          window.location.reload(true);
+        }, error => {
+            window.location.reload(true);
         })
     }
-   
-    render() { 
-        const userstate = this.state;
-        return ( 
-           <React.Fragment>
-                <div className="container-fluid">
-                    <div className="row">
-                        <main className="col-12 col-md-12 col-xl-12">
-                            <div className="vertical-center">
-                                <div className="container">
-                                    <Switch>
-                                        <Route path="/login" name="LoginForm" render={(props) => <LoginForm uid={userstate.username} loginBtnDisabled={userstate.loginBtnDisabled} handleLogin={this.handleLogin} handleDemoLogin={this.handleDemoLogin} handleInputChange={this.handleInputChange} />} />
-                                        <Route path="/chat" name="ChatContainer" render={(props) => <ChatContainer user={userstate} handleLogout={this.handleLogout} />} />
-                                        <Redirect from="/" to="/login"/>
-                                    </Switch>
-                                </div>
-                            </div>
-                        </main>
-                    </div>
-                </div>
-           </React.Fragment>
-            
+    if (loading) {
+        return (
+            <SkeletonPage primaryAction secondaryActions={2}>
+                <Layout>
+                    <Layout.Section>
+                        <Card sectioned>
+                            <SkeletonBodyText />
+                        </Card>
+                        <Card sectioned>
+                            <TextContainer>
+                                <SkeletonDisplayText size="small" />
+                                <SkeletonBodyText />
+                            </TextContainer>
+                        </Card>
+                        <Card sectioned>
+                            <TextContainer>
+                                <SkeletonDisplayText size="small" />
+                                <SkeletonBodyText />
+                            </TextContainer>
+                        </Card>
+                    </Layout.Section>
+                    <Layout.Section secondary>
+                        <Card>
+                            <Card.Section>
+                                <TextContainer>
+                                    <SkeletonDisplayText size="small" />
+                                    <SkeletonBodyText lines={2} />
+                                </TextContainer>
+                            </Card.Section>
+                            <Card.Section>
+                                <SkeletonBodyText lines={1} />
+                            </Card.Section>
+                        </Card>
+                    </Layout.Section>
+                </Layout>
+            </SkeletonPage>
         );
     }
+
+    return (
+        <ChatContainer user={user} handleLogout={handleLogout} />);
 }
+
+export default Base;

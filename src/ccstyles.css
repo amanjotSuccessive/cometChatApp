@@ -23,7 +23,7 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   font-family: "product_regular", Arial, sans-serif !important ;
-  overflow:hidden;
+  overflow: hidden;
 }
 
 .login-form {
@@ -221,16 +221,13 @@ label {
   .demo-user-uid {
     font-size: 12px;
   }
-  main
-  {
+  main {
     padding: 0 !important;
   }
-  .vertical-center
-  {
+  .vertical-center {
     height: 100vh;
   }
-  .msg-media-img img
-  {
+  .msg-media-img img {
     max-width: 50vw !important;
   }
 }
@@ -338,8 +335,7 @@ button img.loader {
 .status-text {
   text-transform: capitalize;
 }
-.last-msg
-{
+.last-msg {
   max-width: 80px;
   white-space: nowrap;
   overflow: hidden;
@@ -500,12 +496,10 @@ button img.loader {
   word-wrap: break-word;
 }
 .incoming-msg .attachment-file-msg,
-.incoming-msg .msg-bubble
-{
+.incoming-msg .msg-bubble {
   border-bottom-left-radius: 0 !important;
 }
-.outgoing-msg .attachment-file-msg
-{
+.outgoing-msg .attachment-file-msg {
   border-bottom-right-radius: 0 !important;
 }
 .chat-body-conversation {
@@ -637,8 +631,7 @@ input#typeAMsg {
   transition: 0.5s ease;
   backface-visibility: hidden;
 }
-.msg-media-img.location-marker img
-{
+.msg-media-img.location-marker img {
   width: 170px;
 }
 .click-to-view-text {
@@ -873,8 +866,7 @@ video {
 
 .blocked-tab svg:hover,
 .unban-member svg:hover,
-.add-member-tab svg:hover
-{
+.add-member-tab svg:hover {
   color: #6be842;
   cursor: pointer;
 }
@@ -981,3 +973,9 @@ p.status-text{
   text-overflow: ellipsis;
   margin-bottom: 0;
 } */
+
+.align-center {
+  position: absolute;
+  left: 12em;
+  top: 5em;
+}
