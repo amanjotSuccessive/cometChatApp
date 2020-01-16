@@ -1,5 +1,5 @@
 {
-  "name": "react-cc",
+  "name": "comet-chat",
   "version": "2.0.3",
   "main": "index.js",
   "dependencies": {
