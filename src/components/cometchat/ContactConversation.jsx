@@ -25,7 +25,7 @@ import {
 import Flip from "react-reveal/Flip";
 import RenderConversation from "./RenderConversation";
 import MediaQuery from "react-responsive";
-import defaultUserIco from "../../resources/images/user-default-avatar.png";
+import defaultUserIco from "./../resources/images/user-default-avatar.png";
 
 const ContactConversation = props => {
   const {

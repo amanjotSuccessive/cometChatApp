@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { CometChat } from "@cometchat-pro/chat";
 import GroupMember from "./GroupMember";
 import _ from 'lodash';
-import defaultUserIco from "../../resources/images/user-default-avatar.png";
+import defaultUserIco from "./../resources/images/user-default-avatar.png";
 
 class GroupMembers extends Component {
 

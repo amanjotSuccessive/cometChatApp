@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import BlockedContact from "./BlockedContact";
 import _ from 'lodash';
-import defaultUserIco from "../../resources/images/user-default-avatar.png";
+import defaultUserIco from "./../resources/images/user-default-avatar.png";
 
 class BlockedContacts extends Component {
     constructor(props) {

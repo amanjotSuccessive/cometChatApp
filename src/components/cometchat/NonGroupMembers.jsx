@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { CometChat } from "@cometchat-pro/chat";
 import NonGroupMember from "./NonGroupMember";
 import _ from "lodash";
-import defaultUserIco from "../../resources/images/user-default-avatar.png";
+import defaultUserIco from "./../resources/images/user-default-avatar.png";
 
 class NonGroupMembers extends Component {
   state = {
