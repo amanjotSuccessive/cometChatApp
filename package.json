@@ -60,7 +60,7 @@
     "extends": "react-app"
   },
   "scripts": {
-    "build": "babel --no-babelrc src --out-dir dist --ignore test.js,mock --copy-files --presets=env,stage-2,react",
+    "build": "babel --no-babelrc src --out-dir dist --copy-files --ignore test.js,mock --copy-files --presets=env,stage-2,react",
     "eject": "react-scripts eject",
     "start": "export PORT=4000 && react-scripts start",
     "test": "react-scripts test"
