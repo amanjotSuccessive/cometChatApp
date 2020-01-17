@@ -48,7 +48,7 @@ var _groupDefaultAvatar = require("../../resources/images/group-default-avatar.p
 
 var _groupDefaultAvatar2 = _interopRequireDefault(_groupDefaultAvatar);
 
-var _userDefaultAvatar = require("./../resources/images/user-default-avatar.png");
+var _userDefaultAvatar = require("./../../resources/images/user-default-avatar.png");
 
 var _userDefaultAvatar2 = _interopRequireDefault(_userDefaultAvatar);
 

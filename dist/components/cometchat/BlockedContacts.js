@@ -24,7 +24,7 @@ var _lodash = require("lodash");
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var _userDefaultAvatar = require("./../resources/images/user-default-avatar.png");
+var _userDefaultAvatar = require("./../../resources/images/user-default-avatar.png");
 
 var _userDefaultAvatar2 = _interopRequireDefault(_userDefaultAvatar);
 

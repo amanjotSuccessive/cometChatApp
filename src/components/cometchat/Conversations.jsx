@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import Conversation from "./Conversation";
 import _ from "lodash";
-import defaultUserIco from "./../resources/images/user-default-avatar.png";
+import defaultUserIco from "./../../resources/images/user-default-avatar.png";
 import defaultGroupIco from "../../resources/images/group-default-avatar.png";
 
 class Conversations extends Component {

@@ -40,7 +40,7 @@ var _reactResponsive = require("react-responsive");
 
 var _reactResponsive2 = _interopRequireDefault(_reactResponsive);
 
-var _userDefaultAvatar = require("./../resources/images/user-default-avatar.png");
+var _userDefaultAvatar = require("./../../resources/images/user-default-avatar.png");
 
 var _userDefaultAvatar2 = _interopRequireDefault(_userDefaultAvatar);
 

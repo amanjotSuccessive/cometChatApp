@@ -10,7 +10,7 @@ import _ from "lodash";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 import defaultGroupIco from "../../resources/images/group-default-avatar.png";
-import defaultUserIco from "./../resources/images/user-default-avatar.png";
+import defaultUserIco from "./../../resources/images/user-default-avatar.png";
 
 class ChatContainer extends Component {
   state = {
